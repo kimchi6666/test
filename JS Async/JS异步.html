@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    <script>
+        /*setTimeout(myFunction, 3000)
+        function myFunction() {
+            document.getElementById("demo").innerHTML='I love you!!!'
+        }*/
+        setInterval(myFunction, 1000)
+        //myFunction作为回调函数，作为参数传递给setInterval（）
+        function myFunction() {
+            let d = new Date()
+            document.getElementById('demo').innerHTML =
+                d.getHours() + ':' +
+                d.getMinutes() + ':' +
+                d.getSeconds();
+        }
+        //等待文件
+        function myDisplayer(some) {
+            document.getElementById('demo2').innerHTML=some
+        }
+
+        function getFile(myCallback) {
+            let req = new XMLHttpRequest()
+            req.open('GET', 'mycar.html')
+            req.onload = function () {
+                if (req.status == 200) {
+                    myCallback(this.responseText)
+                } else {
+                    myCallback("ERROR" + req.status)
+                }
+            }
+            req.send()
+        }
+
+        getFile(myDisplayer)
+    </script>
+</body>
+</html>

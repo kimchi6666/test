@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!--<script>
+        let myPromise = new Promise(function (myResolve, myReject) {
+            //'Producing Code'
+
+            myResolve();//成功时
+            myReject();//出错时
+        });
+        //'Consuming Code'(必须等待一个兑现的承诺才能执行)
+        myPromise.then(
+            function (value) {/*成功时执行的代码*/ },
+            function (error) {/*出错时执行的代码*/ };
+        );
+    </script>-->
+    <p id="demo"></p>
+    <script>
+        let myPromise = new Promise(function (myResolve, myReject) {
+            setTimeout(function () {
+                myResolve('sdasdasda');
+            },3000)
+        })
+
+        myPromise.then(function (value) {
+            document.getElementById('demo').innerHTML = value;
+        })
+    </script>
+</body>
+</html>
